@@ -1,2 +1,38 @@
+@charset "UTF-8";
+@font-face {
+  font-family: "Calibre-Medium";
+  src: local("CalibreTest-Medium"), url(./fonts/CalibreTest-Medium.woff) format("woff"); }
+
+@font-face {
+  font-family: "Calibre-Light";
+  src: local("CalibreTest-Light"), url(./fonts/CalibreTest-Light.woff) format("woff"); }
+
+html {
+  font-family: "Calibre-Light", Helvetica, Arial, sans-serif; }
+
 h2 {
-  color: cyan; }
+  font-family: "Calibre-Medium"; }
+
+.main-features {
+  padding-left: 10px;
+  width: 275px; }
+
+.FeatureNode {
+  list-style-type: none;
+  position: relative; }
+  .FeatureNode.present {
+    color: green; }
+  .FeatureNode.present:before {
+    content: '👍 '; }
+  .FeatureNode.missing {
+    color: red; }
+  .FeatureNode.missing:before {
+    content: '👎 '; }
+  .FeatureNode .subfeature-container > span {
+    color: blue;
+    cursor: pointer;
+    font-size: 0.75rem;
+    position: absolute;
+    right: 0;
+    text-decoration: underline;
+    top: 0; }

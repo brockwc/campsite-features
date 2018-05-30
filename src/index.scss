@@ -1,3 +1,77 @@
+////////////////////////////
+// NOTE
+////////////////////////////
+
+// All of my styles for the feature are contained in this sheet. Which is not ideal in most
+// situations. If the app were larger or more complex I would split these out into files that handled  
+// common things together rather than lumping everything into a single sheet (font imports would have  
+// a file, as would text styling, etc.). In the interest of not making someone click through the file 
+// tree, I've included them all here separated by (hopefully )helpful comments.
+
+
+////////////////////////////
+// FONT IMPORTS
+////////////////////////////
+@font-face {
+    font-family: "Calibre-Medium";
+    src: local('CalibreTest-Medium'), url(./fonts/CalibreTest-Medium.woff) format('woff');
+}
+@font-face {
+    font-family: "Calibre-Light";
+    src: local('CalibreTest-Light'), url(./fonts/CalibreTest-Light.woff) format('woff');
+}
+
+
+////////////////////////////
+// TEXT STYLE
+////////////////////////////
+html {
+    font-family: "Calibre-Light", Helvetica, Arial, sans-serif;
+}
 h2 {
-    color: cyan;
+    font-family: "Calibre-Medium";
+}
+
+
+////////////////////////////
+// ELEMENT STRUCTURE
+////////////////////////////
+.main-features {
+    padding-left: 10px;
+    width: 275px;
+}
+
+
+////////////////////////////
+// COMPONENT STYLES
+////////////////////////////
+.FeatureNode {
+    list-style-type: none;
+    position: relative;
+
+    &.present {
+        color: green;
+    }
+    &.present:before {
+        content: '👍 ';
+    }
+
+    &.missing {
+        color: red;
+    }
+    &.missing:before {
+        content: '👎 ';
+    }
+
+    .subfeature-container {
+        > span {
+            color: blue;
+            cursor: pointer;
+            font-size: 0.75rem;
+            position: absolute;
+            right: 0;
+            text-decoration: underline;
+            top: 0;
+        }
+    }
 }
