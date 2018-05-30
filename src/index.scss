@@ -36,12 +36,20 @@ h2 {
 ////////////////////////////
 // ELEMENT STRUCTURE
 ////////////////////////////
+.container-main {
+    background-color: aliceblue;
+    border-radius: 3px;
+    margin: 40px auto 0;
+    padding: 1px 20px;
+    width: 300px;
+
+}
+
 ul {
-    padding-left: 20px;
-    
+    padding-left: 10px;
+
     &.main-features {
-        padding-left: 0;
-        width: 275px;
+        padding-left: 5px;
     }
 }
 
