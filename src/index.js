@@ -13,14 +13,8 @@ class FeatureList extends React.Component {
             <FeatureNode 
                 node={feature} 
                 children={feature.subfeatures} 
-                className={nodeClass}
             />
         );
-
-        let nodeClass = classNames(('FeatureNode'), {
-            "present": this.props.presence === true,
-            "missing": this.props.presence === false
-        })
 
         return (
             <ul className="main-features">
@@ -48,6 +42,10 @@ class FeatureNode extends React.Component {
     render () {
 
         let childnodes = null;
+        let nodeClass = classNames('FeatureNode', {
+            "present": this.props.node.presence === true,
+            "missing": this.props.node.presence === false
+        })
 
         // if children exist, this component will call itself
         if (this.props.children.length > 0) {
@@ -61,10 +59,13 @@ class FeatureNode extends React.Component {
 
         // return the feature and the subfeatures if they exist
         return (
-            <li key={this.props.node.id} onClick={this.toggleHidden.bind(this)}>
+            <li key={this.props.node.id} className={nodeClass} >
                 <span>{this.props.node.title}</span>
                 { childnodes ? (
-                    <ul>{!this.state.isHidden && childnodes}</ul>
+                    <div class="subfeature-container">
+                        <span onClick={this.toggleHidden.bind(this)}>details</span>
+                        <ul>{!this.state.isHidden && childnodes}</ul>
+                    </div>
                 ) : (null) }
             </li>
         );
