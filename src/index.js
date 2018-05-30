@@ -5,7 +5,18 @@ import campFeatures from './camp_features'
 
 // Main container component for the feature list
 class FeatureList extends React.Component {
-    render() {
+    constructor () {
+        super()
+        this.state = {
+            isHidden: true
+        }
+    }
+    toggleHidden () {
+        this.setState({
+            isHidden: !this.state.isHidden
+        })
+    }
+    render () {
         // This loops through our campFeatures and creates a new component for each one, passing along the main feature and its subfeatures as props 
         let nodes = campFeatures.map((feature) => 
             <FeatureNode node={feature} children={feature.subfeatures} />
@@ -21,12 +32,12 @@ class FeatureList extends React.Component {
 
 // FeatureNode component outputs the individual feature as a list item and is also where recursion takes place
 class FeatureNode extends React.Component {
-    render() {
+    render () {
 
         let childnodes = null;
 
         // if children exist, this component will call itself
-        if(this.props.children) {
+        if (this.props.children) {
             childnodes = this.props.children.map((childnode) => 
                 <FeatureNode node={childnode} children={childnode.subfeatures} />
             );
