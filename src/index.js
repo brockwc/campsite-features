@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css'
+import classNames from 'classnames'
 import campFeatures from './camp_features'
 
 // Main container component for the feature list
@@ -9,8 +10,17 @@ class FeatureList extends React.Component {
     render () {
         // This loops through our campFeatures and creates a new component for each one, passing along the main feature and its subfeatures as props 
         let nodes = campFeatures.map((feature) => 
-            <FeatureNode node={feature} children={feature.subfeatures} />
+            <FeatureNode 
+                node={feature} 
+                children={feature.subfeatures} 
+                className={nodeClass}
+            />
         );
+
+        let nodeClass = classNames(('FeatureNode'), {
+            "present": this.props.presence === true,
+            "missing": this.props.presence === false
+        })
 
         return (
             <ul className="main-features">
@@ -42,7 +52,10 @@ class FeatureNode extends React.Component {
         // if children exist, this component will call itself
         if (this.props.children.length > 0) {
             childnodes = this.props.children.map((childnode) => 
-                <FeatureNode node={childnode} children={childnode.subfeatures} />
+                <FeatureNode 
+                    node={childnode} 
+                    children={childnode.subfeatures} 
+                />
             );
         }
 
