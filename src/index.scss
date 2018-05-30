@@ -36,9 +36,13 @@ h2 {
 ////////////////////////////
 // ELEMENT STRUCTURE
 ////////////////////////////
-.main-features {
-    padding-left: 10px;
-    width: 275px;
+ul {
+    padding-left: 20px;
+    
+    &.main-features {
+        padding-left: 0;
+        width: 275px;
+    }
 }
 
 
@@ -67,11 +71,11 @@ h2 {
         > span {
             color: blue;
             cursor: pointer;
-            font-size: 0.75rem;
+            font-size: 0.8rem;
             position: absolute;
             right: 0;
             text-decoration: underline;
-            top: 0;
+            top: 3px;
         }
     }
 }
